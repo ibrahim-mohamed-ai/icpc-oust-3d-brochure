@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ICPC OUST Community — 3D Brochure</title>
+  <meta name="description" content="An interactive, scroll-driven 3D brochure for the ICPC OUST Community at Obour University for Science and Technology." />
+  <meta name="theme-color" content="#040916" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a1d4d'/%3E%3Cpath d='M12 9l-6 7 6 7M20 9l6 7-6 7' fill='none' stroke='%23f4b73a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+</head>
+<body class="is-loading">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="bar">
+    <img class="brand" src="/assets/brand/logo-mark.png" alt="ICPC OUST Community logo" width="40" height="42" />
+    <button id="view-toggle" class="chip" type="button" aria-pressed="false">Simple view</button>
+  </header>
+
+  <div id="loader" role="status" aria-live="polite">
+    <div class="loader-bar"><span id="loader-fill"></span></div>
+    <p>Preparing the brochure…</p>
+  </div>
+
+  <div id="stage" aria-hidden="false"></div>
+
+  <main id="main" tabindex="-1">
+    <section id="hero" class="hud">
+      <p class="eyebrow">ICPC OUST Community</p>
+      <h1>Same Dream.<br /><span>Bigger Together.</span></h1>
+    </section>
+    <div id="cue" class="hud" aria-hidden="true"><span>Scroll</span><i></i></div>
+    <p id="caption" class="hud" aria-live="off"><span class="k"></span><strong class="t"></strong></p>
+    <nav id="progress" class="hud" aria-label="Brochure chapters"><div class="track"><div id="progress-fill"></div></div><ol id="chapters"></ol></nav>
+    <button id="replay" class="hud chip" type="button" tabindex="-1">↺ Replay</button>
+    <div id="spacer"></div>
+    <section id="static-view" hidden></section>
+  </main>
+
+  <noscript><p class="noscript">This brochure needs JavaScript. The ICPC OUST Community is the official programming community at Obour University for Science and Technology.</p></noscript>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
