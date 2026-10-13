@@ -1,7 +1,7 @@
 # ICPC OUST — Cinematic 3D Scrolling Brochure
 
 A scroll-driven Three.js experience: two tri-fold brochure spreads (six real 3D panels with hinge pivots),
-a scrubbed GSAP ScrollTrigger timeline, deliberate lighting, and a simple-view fallback.
+a scrubbed GSAP ScrollTrigger timeline, deliberate lighting, user-controlled autoplay, and a responsive community footer.
 
 ## Run
 
@@ -18,7 +18,7 @@ Requires Node 18+. Regenerating the derived images is optional (needs Python + P
 
 ```
 index.html            HUD markup
-src/main.js           boot, mode switching (3D / simple view), render loop, resize
+src/main.js           boot, 3D render loop, autoplay driver, resize
 src/scene.js          Three.js scene: hinged sheets, lights, atmosphere, camera rig
 src/animations.js     single scrubbed GSAP timeline -> state object S (fully reversible)
 src/panels.js         panel artwork (canvas textures built from the real assets + original copy)
@@ -38,14 +38,14 @@ public/assets/        brand/, photos/, reference/ (reference is never used as a 
 * Every tween is a `fromTo`, so the state at any scroll position is a pure function of the timeline:
   reversible and jump-safe. The render loop is event-driven (it idles when nothing moves, except for a tiny
   ambient drift in the hero and finale).
-* Photographs are separate meshes lifted off the paper; the simple view bakes them into the panels.
+* Photographs are separate meshes lifted off the paper for depth. The autoplay driver reuses the same ScrollTrigger timeline and pauses on reading positions; it does not create a second scene or animation framework.
 
 ## Responsive / accessibility
 
-* Desktop and tablet: full 3D (lower texture/shadow quality under 1100px or on ≤4 cores).
-* Phones (<700px), `prefers-reduced-motion`, or no WebGL: the stacked **Simple view** with alt text.
-  The header toggle switches modes at any time.
-* Chapter dots are buttons; focus rings are visible; native scrolling is never hijacked.
+* Desktop and mobile use the same 3D presentation (lower texture/shadow quality under 1100px or on ≤4 cores).
+* The header Play/Pause Animations button runs a continuous, cancellable presentation loop with reading pauses; manual scrolling and chapter navigation remain available and stop autoplay.
+* Browsers without WebGL receive a clear compatibility message.
+* Chapter dots are buttons; focus rings are visible; native scrolling is never hijacked. The footer links to the community website, WhatsApp, and Facebook; add the official Instagram page URL when it is available.
 
 ## Overriding panel artwork
 
@@ -55,4 +55,4 @@ and set `USE_PANEL_OVERRIDES = true` in `src/assets.js`. They replace the genera
 ## Known limitations
 
 See `ASSET_MANIFEST.md` (missing/approximated assets). The six-panel finale is an overview;
-read panel text in the focus scenes or the Simple view. Performance was only tested with a software renderer.
+read panel text in the focus scenes. Performance was only tested with a software renderer.

@@ -1,7 +1,7 @@
 // Procedural panel artwork. Each panel is composed from the supplied logos / photographs plus the
 // original brochure copy, drawn as sharp vector text on a 1024×2000 canvas (panel aspect ≈ 0.512,
 // matching the supplied layout). Photographs are returned separately so the 3D scene can lift
-// them off the paper; the simple view bakes them in.
+// them off the paper for depth.
 import { CONTENT as C, PANEL_ALT } from './content.js';
 
 export const PW = 1024;
@@ -291,9 +291,9 @@ export function composePhoto(def, scale = 1) {
 
 /**
  * @param {{images:Record<string,HTMLImageElement|null>, overrides:(HTMLImageElement|null)[]}} loaded
- * @param {{scale?:number, bake?:boolean}} opts  scale: texture resolution factor; bake: paint photos into the panel
+ * @param {{scale?:number}} opts  scale: texture resolution factor
  */
-export function generatePanels(loaded, { scale = 1, bake = false } = {}) {
+export function generatePanels(loaded, { scale = 1 } = {}) {
   const A = { logoMark: loaded.images.logoMark, logoLockup: loaded.images.logoLockup, uni: loaded.images.uni, lawn: loaded.images.lawn, flag: loaded.images.flag, team: loaded.images.team };
   return PAINTERS.map((paint, i) => {
     const cv = document.createElement('canvas'); cv.width = Math.round(PW * scale); cv.height = Math.round(PH * scale);
@@ -303,11 +303,9 @@ export function generatePanels(loaded, { scale = 1, bake = false } = {}) {
     if (override) { ctx.drawImage(override, 0, 0, PW, PH); }
     else {
       photos = paint(ctx, A);
-      photos.forEach((p) => { // soft contact shadow + (when baked) the photo itself
+      photos.forEach((p) => {
         ctx.save(); ctx.shadowColor = 'rgba(0,0,0,0.45)'; ctx.shadowBlur = 26; ctx.shadowOffsetY = 10; rr(ctx, p.rect.x, p.rect.y, p.rect.w, p.rect.h, p.radius); ctx.fillStyle = '#0b1530'; ctx.fill(); ctx.restore();
-        if (bake) ctx.drawImage(composePhoto(p, 1), p.rect.x, p.rect.y, p.rect.w, p.rect.h);
       });
-      if (bake) photos = [];
     }
     return { canvas: cv, photos: photos.map((p) => ({ ...p, canvas: composePhoto(p, scale) })), alt: PANEL_ALT[i], index: i };
   });

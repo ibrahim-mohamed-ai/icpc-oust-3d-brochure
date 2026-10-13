@@ -59,7 +59,7 @@ export const CONTENT = {
   sponsor: 'Sponsored by Obour University for Science & Technology (OUST)',
 };
 
-// Accessible descriptions (alt text) for each panel — used by the simple view.
+// Accessible descriptions (alt text) for each brochure panel.
 export const PANEL_ALT = [
   'Brochure cover: the ICPC OUST Community logo, a stone tablet with a code symbol, and the line "Same Dream, Bigger Together".',
   'Who We Are: ICPC OUST Community is the official programming community at Obour University for Science and Technology. Learn Together, Compete Together, Grow Together. A photo of the community seated on a lawn. What We Do: organize training sessions and workshops; prepare and support teams for ICPC and related competitions; build a strong community of passionate learners; connect you with opportunities and mentors. Better Students, Stronger Teams, Bigger Dreams.',

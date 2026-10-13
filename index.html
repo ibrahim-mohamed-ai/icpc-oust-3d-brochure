@@ -13,7 +13,7 @@
 
   <header class="bar">
     <img class="brand" src="/assets/brand/logo-mark.png" alt="ICPC OUST Community logo" width="40" height="42" />
-    <button id="view-toggle" class="chip" type="button" aria-pressed="false">Simple view</button>
+    <button id="autoplay-toggle" class="chip" type="button" aria-pressed="false" disabled>▶ Play Animations</button>
   </header>
 
   <div id="loader" role="status" aria-live="polite">
@@ -33,8 +33,37 @@
     <nav id="progress" class="hud" aria-label="Brochure chapters"><div class="track"><div id="progress-fill"></div></div><ol id="chapters"></ol></nav>
     <button id="replay" class="hud chip" type="button" tabindex="-1">↺ Replay</button>
     <div id="spacer"></div>
-    <section id="static-view" hidden></section>
   </main>
+
+  <section id="webgl-fallback" hidden aria-labelledby="fallback-title">
+    <p class="eyebrow">ICPC OUST Community</p>
+    <h1 id="fallback-title">This brochure needs WebGL.</h1>
+    <p>Please enable hardware acceleration or open this page in an up-to-date browser to experience the interactive 3D presentation.</p>
+  </section>
+
+  <footer class="site-footer" aria-label="ICPC OUST Community links">
+    <div class="footer-inner">
+      <nav class="social-links" aria-label="Social and community links">
+        <a class="social-link" href="https://chat.whatsapp.com/J5mfGWmfYpxGDIZw7BnBVO" target="_blank" rel="noopener noreferrer" aria-label="Join the ICPC OUST WhatsApp community">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 2 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 20.5 3.5Zm-8.6 17a9.6 9.6 0 0 1-4.9-1.3l-.4-.2-3.5.9.9-3.4-.2-.4a9.6 9.6 0 1 1 8.1 4.4Zm5.3-7.2c-.3-.2-1.7-.9-2-.9-.2-.1-.4-.2-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.7-1.4-3.8-3.2-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.5Z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+        <a class="social-link" href="https://oustsas.cloud" target="_blank" rel="noopener noreferrer" aria-label="Visit the ICPC OUST Community website">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.3"/><path d="M2.9 12h18.2M12 2.7c2.4 2.5 3.6 5.6 3.6 9.3s-1.2 6.8-3.6 9.3C9.6 18.8 8.4 15.7 8.4 12S9.6 5.2 12 2.7Z"/></svg>
+          <span>Official ICPC Website</span>
+        </a>
+        <a class="social-link" href="https://www.facebook.com/oust.cpc" target="_blank" rel="noopener noreferrer" aria-label="Follow ICPC OUST Community on Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.1 21.5v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H8v3.1h2.7v8Z"/></svg>
+          <span>Facebook</span>
+        </a>
+        <a class="social-link is-placeholder" href="#instagram-link-placeholder" aria-label="Instagram link placeholder — add the official page URL" aria-disabled="true" title="Instagram page URL not added yet">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.6" cy="6.6" r=".8" class="icon-fill"/></svg>
+          <span>Instagram</span>
+        </a>
+      </nav>
+      <p class="copyright">© 2026 ICPC OUST Community. All rights reserved.</p>
+    </div>
+  </footer>
 
   <noscript><p class="noscript">This brochure needs JavaScript. The ICPC OUST Community is the official programming community at Obour University for Science and Technology.</p></noscript>
   <script type="module" src="/src/main.js"></script>
